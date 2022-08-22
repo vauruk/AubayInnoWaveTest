@@ -5,6 +5,7 @@ import {EditDevice, Home, Splash} from '../../views';
 import {color} from '../../theme';
 import ButtonAdd from '../../views/Home/buttonAdd';
 import BackButtonNav from '../../components/BackButtonNav';
+import ChangeMode from '../../views/Home/ChangeMode';
 
 const optionsHeader: Element = (
   transparent: boolean,
@@ -37,7 +38,7 @@ const routes: StackRoute[] = [
   {
     name: HomeRoutes.HomeLogged,
     component: () => <Home />,
-    options: optionsHeader(false, '', <ButtonAdd />, <BackButtonNav />),
+    options: optionsHeader(false, 'List Device', <ButtonAdd />, <ChangeMode />),
   },
   {
     name: HomeRoutes.EditDevice,

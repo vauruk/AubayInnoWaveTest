@@ -4,30 +4,42 @@
  */
 import React from 'react';
 import {Props} from './types';
-import {TouchableHighlight, View} from 'react-native';
+import {TouchableHighlight, useColorScheme, View} from 'react-native';
 import styles from './style';
 import {Text} from '@rneui/base';
 import Row from '../../../components/FlexBox/Row';
 import Col from '../../../components/FlexBox/Col';
-import {color, customTheme} from '../../../theme';
-import {Icon} from '@rneui/themed';
+import {customTheme} from '../../../theme';
+import {Icon, useTheme} from '@rneui/themed';
 
 const Item: React.FC<Props> = ({testID, style, item}: Props) => {
+  const {theme} = useTheme();
+  const isDarkMode = useColorScheme() === 'dark';
   return (
     <>
-      <View testID={testID} style={[styles.content, style]}>
+      <View
+        testID={testID}
+        style={[
+          styles.content,
+          style,
+          {
+            backgroundColor: isDarkMode
+              ? theme.colors.grey0
+              : theme.colors.white,
+          },
+        ]}>
         <TouchableHighlight
-          underlayColor={color.ligthGray}
-          style={{paddingHorizontal: 10}}
+          underlayColor={theme.colors.grey5}
+          style={{paddingHorizontal: 10, marginTop: 10}}
           onPress={() => console.log('first')}>
           <>
             <Row style={{marginBottom: 10}}>
               <Col flex={0.15} style={customTheme.colLeft}>
-                {item?.os === 'Android' && (
+                {item?.os === 'android' && (
                   <Icon
                     name="android"
                     type="material"
-                    color={'#A6D863'}
+                    color={isDarkMode ? theme.colors.white : '#A6D863'}
                     size={30}
                   />
                 )}
@@ -35,7 +47,7 @@ const Item: React.FC<Props> = ({testID, style, item}: Props) => {
                   <Icon
                     name="apple"
                     type="material-community"
-                    color={'#B3B3B3'}
+                    color={isDarkMode ? theme.colors.white : '#B3B3B3'}
                     size={30}
                   />
                 )}

@@ -4,8 +4,7 @@ import {Modal, Text, TouchableHighlight, View} from 'react-native';
 import styles from './style';
 import Col from '../FlexBox/Col';
 import Row from '../FlexBox/Row';
-import {Icon} from '@rneui/themed';
-import {color} from '../../theme';
+import {Icon, useTheme} from '@rneui/themed';
 
 const ModalMessage: React.FC<Props> = ({
   testID,
@@ -18,6 +17,7 @@ const ModalMessage: React.FC<Props> = ({
   handleCancel,
   handleSuccess,
 }: Props) => {
+  const {theme} = useTheme();
   const _setCancel = () => {
     handleCancel?.();
   };
@@ -31,7 +31,7 @@ const ModalMessage: React.FC<Props> = ({
         return (
           <View style={styles.title}>
             <Icon
-              color={color.error}
+              color={theme.colors.error}
               name="highlight-off"
               size={40}
               type="material"
@@ -42,7 +42,7 @@ const ModalMessage: React.FC<Props> = ({
         return (
           <View style={styles.title}>
             <Icon
-              color={color.success}
+              color={theme.colors.success}
               name="check-circle-outline"
               size={40}
               type="material"
@@ -53,7 +53,7 @@ const ModalMessage: React.FC<Props> = ({
         return (
           <View style={styles.title}>
             <Icon
-              color={color.warning}
+              color={theme.colors.warning}
               name="warning"
               size={40}
               type="material"
@@ -79,13 +79,13 @@ const ModalMessage: React.FC<Props> = ({
           <Row style={{marginTop: 20}}>
             <Col flex={0.5}>
               <TouchableHighlight
-                underlayColor={color.terciary}
+                underlayColor={theme.colors.grey4}
                 onPress={_setCancel}
                 style={[styles.button, styles.buttonCancel]}>
                 <Row>
                   <Col flex={0.35}>
                     <Icon
-                      color={color.gray}
+                      color={theme.colors.grey2}
                       name="close"
                       size={30}
                       type="material"
@@ -101,12 +101,12 @@ const ModalMessage: React.FC<Props> = ({
               <Col flex={0.5}>
                 <TouchableHighlight
                   onPress={_setSuccess}
-                  underlayColor={color.terciary}
+                  underlayColor={theme.colors.grey2}
                   style={[styles.button, styles.buttonSuccess]}>
                   <Row>
                     <Col flex={0.2}>
                       <Icon
-                        color={color.gray}
+                        color={theme.colors.grey3}
                         name="done"
                         size={30}
                         type="material"

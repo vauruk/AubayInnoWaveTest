@@ -22,7 +22,7 @@ export interface FormState {
   loading: boolean;
   submitError: string | undefined;
   deviceData: IDevice | undefined;
-  listDevice: [IDevice];
+  listDevice: Array<IDevice>;
 }
 
 export enum FieldLabel {

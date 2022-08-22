@@ -10,16 +10,16 @@ let device: IDevice = {
   currentOwner: undefined,
 };
 
-const deviceValue: IDevice = {
-  os: 'ios',
-  model: 'Sansung',
-  notes: 'teste dsajlk jl djsakl jlkdsa',
-  currentOwner: 'Vanderson',
-  id: '34333434',
+const initialDevice: IDevice = {
+  os: undefined,
+  model: undefined,
+  notes: undefined,
+  currentOwner: undefined,
+  id: undefined,
 };
 const listDevice: [IDevice] = [];
-listDevice.push(deviceValue);
-listDevice.push(deviceValue);
+//listDevice.push(deviceValue);
+//listDevice.push(deviceValue);
 
 export const initialState: FormState = {
   loading: false,
@@ -37,17 +37,25 @@ export const deviceFormSlice = createSlice({
       const {fieldName, value} = action.payload;
       const newstate = {...state};
       console.log('setField', fieldName, value);
-      newstate.deviceData = {...newstate.deviceData, [fieldName]: value};
+      newstate.deviceData = {
+        ...newstate.deviceData,
+        [fieldName]: value,
+        id: Math.round(Math.random() * 99999).toString(),
+      };
       return newstate;
     },
     fetchSave(state: FormState) {
       const newstate = {...state};
-      newstate.submitError = undefined;
+      newstate.listDevice.push(newstate.deviceData);
+    },
+    cleanDeviceObj(state: FormState) {
+      const newstate = {...state};
+      newstate.deviceData = initialDevice;
       return newstate;
     },
   },
 });
 
-export const {setField, fetchSave} = deviceFormSlice.actions;
+export const {setField, fetchSave, cleanDeviceObj} = deviceFormSlice.actions;
 
 export default deviceFormSlice.reducer;

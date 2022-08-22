@@ -2,12 +2,15 @@ import React from 'react';
 
 import {FlatList, View} from 'react-native';
 import {Props} from './types';
-import {customTheme} from '../../theme';
+//import {customTheme} from '../../theme';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
+import {useTheme} from '@rneui/themed';
 import Item from './Item';
+import {customTheme} from '../../theme';
 
 const Home: React.FC<Props> = (props: Props) => {
+  const {theme} = useTheme();
   const listDevice = useSelector(
     (state: RootState) => state.deviceForm.listDevice,
   );

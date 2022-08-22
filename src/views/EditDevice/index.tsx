@@ -8,9 +8,11 @@ import {RootState, useAppDispatch} from '../../store';
 import {Input, Button} from '@rneui/themed';
 import {customTheme} from '../../theme';
 import {FieldLabel} from '../../store/device/types';
-import {fetchSave, setField} from '../../store/device';
+import {cleanDeviceObj, fetchSave, setField} from '../../store/device';
+import {useNavigation} from '@react-navigation/native';
 
 const EditDevice: React.FC<Props> = (props: Props) => {
+  const navigation = useNavigation();
   const dispatch = useAppDispatch();
   const deviceData = useSelector(
     (state: RootState) => state.deviceForm.deviceData,
@@ -26,6 +28,8 @@ const EditDevice: React.FC<Props> = (props: Props) => {
 
   const handleSave = () => {
     dispatch(fetchSave());
+    navigation.goBack();
+    dispatch(cleanDeviceObj());
   };
 
   return (
