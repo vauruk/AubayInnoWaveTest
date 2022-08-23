@@ -69,7 +69,6 @@ export const deviceFormSlice = createSlice({
     },
     fetchDeleteDevice(state: FormState, action: PayloadAction<IDevice>) {
       const newstate = {...state};
-      //newstate.deviceData = initialDevice;
       let indexof = newstate.listDevice.findIndex(
         itArr => itArr.id === action.payload.id,
       );
@@ -81,10 +80,13 @@ export const deviceFormSlice = createSlice({
     },
     fetchEditDevice(state: FormState, action: PayloadAction<IDevice>) {
       const newstate = {...state};
-      //newstate.deviceData = initialDevice;
       newstate.deviceData = action.payload;
 
       return newstate;
+    },
+    fetchUploadListDevice(state: FormState, action: PayloadAction<[IDevice]>) {
+      const newstate = {...state};
+      newstate.listDevice.push(...action.payload);
     },
   },
 });
@@ -94,6 +96,7 @@ export const {
   fetchSave,
   cleanDeviceObj,
   fetchDeleteDevice,
+  fetchUploadListDevice,
   fetchEditDevice,
 } = deviceFormSlice.actions;
 

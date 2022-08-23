@@ -35,7 +35,7 @@ const ChangeMode: React.FC<Props> = () => {
         underlayColor={theme.colors.grey5}
         onPress={() => handleChange()}>
         <Icon
-          name="collections"
+          name="loop"
           type="material"
           color={theme.colors.primary}
           size={25}

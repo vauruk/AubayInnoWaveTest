@@ -59,7 +59,6 @@ export default class HttpClient {
           resolve(res.data);
         })
         .catch((err: any) => {
-          console.log('<<<<<first>>>>>', err.message);
           if (err.response) {
             // The client was given an error response (5xx, 4xx)
             console.log(err.response.data);

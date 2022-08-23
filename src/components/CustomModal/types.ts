@@ -1,5 +1,3 @@
-import {StyleProp, ViewStyle} from 'react-native';
-
 export interface Props {
   testID?: string;
   title?: any;

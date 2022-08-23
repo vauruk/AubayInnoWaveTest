@@ -1,18 +1,11 @@
-import React from 'react';
 import {StyleSheet} from 'react-native';
-import {color, theme} from '../../theme';
+import {color} from '../../theme';
 
 export const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-
-    //backgroundColor: color.gray,
-    //opacity: 0.7,
-    //opacity: 0.6,
-    // backgroundColor: 'gray',
-    // marginTop: 22,
   },
   modalView: {
     width: '90%',

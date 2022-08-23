@@ -9,7 +9,7 @@ import Item from './Item';
 import {customTheme} from '../../theme';
 import {fetchDeleteDevice, fetchEditDevice} from '../../store/device';
 import {IDevice} from '../EditDevice/types';
-import CustomModal from '../../components/CustomModal';
+import {CustomModal} from '../../components';
 import axios from 'axios';
 import {Config} from '../../config';
 import {useNavigation} from '@react-navigation/native';
@@ -29,8 +29,6 @@ const Home: React.FC<Props> = (props: Props) => {
   );
 
   const getQuoteDay = () => {
-    //zenquotes.io/api/today
-
     axios({
       method: 'get',
       url: Config.ApiQuotesUrl,
@@ -70,7 +68,7 @@ const Home: React.FC<Props> = (props: Props) => {
       handleEdit={() => handleEdit(item)}
     />
   );
-  // consoleDebug(false, 'URL', Config.ApiQuotesUrl);
+
   return (
     <View style={customTheme.content}>
       <CustomModal

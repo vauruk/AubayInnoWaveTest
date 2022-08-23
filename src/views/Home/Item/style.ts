@@ -5,8 +5,9 @@ const styles = StyleSheet.create({
   content: {
     justifyContent: 'center',
     backgroundColor: color.white,
+  },
+  container: {
     borderBottomWidth: 1,
-    marginBottom: 5,
     borderColor: color.secondary,
   },
   title: {

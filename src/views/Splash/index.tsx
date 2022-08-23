@@ -18,16 +18,6 @@ const Splash: React.FC<Props> = (props: Props) => {
     }, 5000);
   });
   return <LottieView source={require('./lottie2.json')} autoPlay loop />;
-  //TODO Exemplo de uso para fundo de imagem
-  // return (
-  //   <ImageBackground resizeMode="stretch" source={background}>
-  //     <View style={customTheme.content}>
-  //       <View style={styles.logo}>
-  //         <Image source={logo2} style={{height: 150, width: 150}} />
-  //       </View>
-  //     </View>
-  //   </ImageBackground>
-  // );
 };
 
 export default Splash;

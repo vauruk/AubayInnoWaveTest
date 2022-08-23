@@ -22,8 +22,6 @@ const color = {
 
 const customTheme = StyleSheet.create({
   content: {
-    //paddingLeft: 15,
-    // paddingRight: 15,
     height: '100%',
     width: '100%',
     backgroundColor: color.white,

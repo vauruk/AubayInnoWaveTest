@@ -3,7 +3,7 @@ import {StackRoute} from '../types';
 import {HomeRoutes} from './types';
 import {EditDevice, Home, Splash} from '../../views';
 import {color} from '../../theme';
-import ButtonAdd from '../../views/Home/buttonAdd';
+import ButtonAdd from '../../views/Home/headerButton';
 import BackButtonNav from '../../components/BackButtonNav';
 import ChangeMode from '../../views/Home/ChangeMode';
 

@@ -2,8 +2,7 @@ import React from 'react';
 import {Props} from './types';
 import {Modal, TouchableHighlight, View} from 'react-native';
 import styles from './style';
-import Col from '../FlexBox/Col';
-import Row from '../FlexBox/Row';
+import {Col, Row} from '../../components';
 import {Icon, Text, useTheme} from '@rneui/themed';
 
 const CustomModal: React.FC<Props> = ({
