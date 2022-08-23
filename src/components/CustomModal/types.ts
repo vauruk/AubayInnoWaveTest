@@ -8,7 +8,7 @@ export interface Props {
   isVisible: boolean;
   textConfirm?: string;
   textCancel?: string;
-  type?: 'error' | 'warning' | 'success';
+  type?: 'error' | 'warning' | 'success' | 'info';
   handleCancel?: () => void;
   handleSuccess?: () => void;
 }

@@ -18,8 +18,6 @@ const initialDevice: IDevice = {
   id: undefined,
 };
 const listDevice: [IDevice] = [];
-//listDevice.push(deviceValue);
-//listDevice.push(deviceValue);
 
 export const initialState: FormState = {
   loading: false,
@@ -36,26 +34,67 @@ export const deviceFormSlice = createSlice({
     setField(state: FormState, action: PayloadAction<SetField>) {
       const {fieldName, value} = action.payload;
       const newstate = {...state};
-      console.log('setField', fieldName, value);
       newstate.deviceData = {
         ...newstate.deviceData,
         [fieldName]: value,
-        id: Math.round(Math.random() * 99999).toString(),
       };
       return newstate;
     },
     fetchSave(state: FormState) {
       const newstate = {...state};
-      newstate.listDevice.push(newstate.deviceData);
+      if (newstate.deviceData?.id === undefined) {
+        newstate.deviceData = {
+          ...newstate.deviceData,
+          id: Math.round(Math.random() * 99999).toString(),
+        };
+        newstate.listDevice.push(newstate.deviceData);
+        newstate.deviceData = initialDevice;
+      } else {
+        let indexof = newstate.listDevice.findIndex(
+          itArr => itArr.id === newstate.deviceData?.id,
+        );
+        let newArray = newstate.listDevice.slice();
+        newArray.splice(indexof, 1);
+        newstate.listDevice = newArray;
+        newstate.listDevice.push(newstate.deviceData);
+
+        newstate.deviceData = initialDevice;
+        return newstate;
+      }
     },
     cleanDeviceObj(state: FormState) {
       const newstate = {...state};
       newstate.deviceData = initialDevice;
       return newstate;
     },
+    fetchDeleteDevice(state: FormState, action: PayloadAction<IDevice>) {
+      const newstate = {...state};
+      //newstate.deviceData = initialDevice;
+      let indexof = newstate.listDevice.findIndex(
+        itArr => itArr.id === action.payload.id,
+      );
+      let newArray = newstate.listDevice.slice();
+      newArray.splice(indexof, 1);
+      newstate.listDevice = newArray;
+
+      return newstate;
+    },
+    fetchEditDevice(state: FormState, action: PayloadAction<IDevice>) {
+      const newstate = {...state};
+      //newstate.deviceData = initialDevice;
+      newstate.deviceData = action.payload;
+
+      return newstate;
+    },
   },
 });
 
-export const {setField, fetchSave, cleanDeviceObj} = deviceFormSlice.actions;
+export const {
+  setField,
+  fetchSave,
+  cleanDeviceObj,
+  fetchDeleteDevice,
+  fetchEditDevice,
+} = deviceFormSlice.actions;
 
 export default deviceFormSlice.reducer;

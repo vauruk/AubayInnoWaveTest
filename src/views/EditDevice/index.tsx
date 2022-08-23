@@ -1,26 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {View} from 'react-native';
 import {Props} from './types';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useSelector} from 'react-redux';
 import {RootState, useAppDispatch} from '../../store';
-import {Input, Button} from '@rneui/themed';
+import {Input, Button, BottomSheet, ListItem} from '@rneui/themed';
 import {customTheme} from '../../theme';
 import {FieldLabel} from '../../store/device/types';
 import {cleanDeviceObj, fetchSave, setField} from '../../store/device';
 import {useNavigation} from '@react-navigation/native';
 
 const EditDevice: React.FC<Props> = (props: Props) => {
+  const [isShowSelectOs, setIsShowSelectOs] = useState<boolean>(false);
   const navigation = useNavigation();
   const dispatch = useAppDispatch();
   const deviceData = useSelector(
     (state: RootState) => state.deviceForm.deviceData,
   );
 
-  const openCart = () => {
-    // navigation.navigate(ProductRoutes.CartList);
+  const handleSelectOS = item => {
+    setIsShowSelectOs(false);
+    onChangeText(FieldLabel.os, item);
   };
+  const list = [
+    {title: 'Apple', text: 'ios'},
+    {
+      title: 'Android',
+      text: 'android',
+    },
+    {
+      title: 'Cancel',
+      containerStyle: {backgroundColor: 'red'},
+      titleStyle: {color: 'white'},
+      onPress: () => setIsShowSelectOs(false),
+    },
+  ];
 
   const onChangeText = (fieldLabel: FieldLabel, text: string) => {
     dispatch(setField({fieldName: fieldLabel, value: text}));
@@ -36,14 +51,29 @@ const EditDevice: React.FC<Props> = (props: Props) => {
     <ScrollView style={customTheme.content}>
       <View>
         <Input
+          label={'Os'}
+          disabled={false}
+          value={deviceData?.os}
+          onChangeText={value => onChangeText(FieldLabel.os, value)}
+          onPressIn={() => setIsShowSelectOs(true)}
+        />
+        <BottomSheet modalProps={{}} isVisible={isShowSelectOs}>
+          {list.map((l, i) => (
+            <ListItem
+              key={i}
+              containerStyle={l.containerStyle}
+              onPress={() => handleSelectOS(l.text)}>
+              <ListItem.Content>
+                <ListItem.Title style={l.titleStyle}>{l.title}</ListItem.Title>
+              </ListItem.Content>
+            </ListItem>
+          ))}
+        </BottomSheet>
+
+        <Input
           label={'Model'}
           value={deviceData?.model}
           onChangeText={value => onChangeText(FieldLabel.model, value)}
-        />
-        <Input
-          label={'Os'}
-          value={deviceData?.os}
-          onChangeText={value => onChangeText(FieldLabel.os, value)}
         />
         <Input
           label={'Current Owner'}

@@ -4,7 +4,7 @@
  */
 import React, {useEffect} from 'react';
 
-import {Text, TouchableHighlight, useColorScheme, View} from 'react-native';
+import {TouchableHighlight, useColorScheme, View} from 'react-native';
 import {Props} from './types';
 import {Icon, useTheme} from '@rneui/themed';
 import {useThemeMode} from '@rneui/themed';

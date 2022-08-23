@@ -1,17 +1,17 @@
 import React from 'react';
 import {Props} from './types';
-import {Modal, Text, TouchableHighlight, View} from 'react-native';
+import {Modal, TouchableHighlight, View} from 'react-native';
 import styles from './style';
 import Col from '../FlexBox/Col';
 import Row from '../FlexBox/Row';
-import {Icon, useTheme} from '@rneui/themed';
+import {Icon, Text, useTheme} from '@rneui/themed';
 
-const ModalMessage: React.FC<Props> = ({
+const CustomModal: React.FC<Props> = ({
   testID,
   children,
   title,
   isVisible,
-  textCancel = 'Cancelar',
+  textCancel,
   textConfirm,
   type,
   handleCancel,
@@ -60,10 +60,31 @@ const ModalMessage: React.FC<Props> = ({
             />
           </View>
         );
+      } else if (type === 'info') {
+        return (
+          <View style={styles.title}>
+            <Icon
+              color={theme.colors.warning}
+              name="info"
+              size={40}
+              type="material"
+            />
+          </View>
+        );
       } else {
         return title;
       }
     }
+  };
+
+  const getFlex = () => {
+    if (textCancel && textConfirm) {
+      return 0.5;
+    }
+    if ((textCancel && !textConfirm) || (!textCancel && textConfirm)) {
+      return 1;
+    }
+    return 0.5;
   };
 
   return (
@@ -77,28 +98,30 @@ const ModalMessage: React.FC<Props> = ({
           {titleModal()}
           {children}
           <Row style={{marginTop: 20}}>
-            <Col flex={0.5}>
-              <TouchableHighlight
-                underlayColor={theme.colors.grey4}
-                onPress={_setCancel}
-                style={[styles.button, styles.buttonCancel]}>
-                <Row>
-                  <Col flex={0.35}>
-                    <Icon
-                      color={theme.colors.grey2}
-                      name="close"
-                      size={30}
-                      type="material"
-                    />
-                  </Col>
-                  <Col flex={0.65}>
-                    <Text style={styles.textCancel}>{textCancel}</Text>
-                  </Col>
-                </Row>
-              </TouchableHighlight>
-            </Col>
+            {textCancel && (
+              <Col flex={getFlex()}>
+                <TouchableHighlight
+                  underlayColor={theme.colors.grey4}
+                  onPress={_setCancel}
+                  style={[styles.button, styles.buttonCancel]}>
+                  <Row>
+                    <Col flex={0.35}>
+                      <Icon
+                        color={theme.colors.grey2}
+                        name="close"
+                        size={30}
+                        type="material"
+                      />
+                    </Col>
+                    <Col flex={0.65}>
+                      <Text style={styles.textCancel}>{textCancel}</Text>
+                    </Col>
+                  </Row>
+                </TouchableHighlight>
+              </Col>
+            )}
             {textConfirm && (
-              <Col flex={0.5}>
+              <Col flex={getFlex()}>
                 <TouchableHighlight
                   onPress={_setSuccess}
                   underlayColor={theme.colors.grey2}
@@ -106,7 +129,7 @@ const ModalMessage: React.FC<Props> = ({
                   <Row>
                     <Col flex={0.2}>
                       <Icon
-                        color={theme.colors.grey3}
+                        color={theme.colors.white}
                         name="done"
                         size={30}
                         type="material"
@@ -126,4 +149,4 @@ const ModalMessage: React.FC<Props> = ({
   );
 };
 
-export default ModalMessage;
+export default CustomModal;

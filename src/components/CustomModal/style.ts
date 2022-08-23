@@ -40,19 +40,19 @@ export const styles = StyleSheet.create({
   },
   buttonCancel: {
     backgroundColor: color.gray2,
-    marginRight: 10,
+    marginHorizontal: 10,
   },
   buttonSuccess: {
     backgroundColor: color.primary,
     color: color.white,
-    marginLeft: 10,
+    marginHorizontal: 10,
   },
   textCancel: {
     color: color.gray,
     fontSize: 20,
   },
   textSuccess: {
-    color: color.gray,
+    color: color.white,
     fontSize: 20,
   },
   title: {

@@ -5,4 +5,6 @@ export interface Props {
   testID?: string;
   style?: StyleProp<ViewStyle>;
   item?: IDevice;
+  handleDelete?: (item: IDevice) => void;
+  handleEdit?: (item: IDevice) => void;
 }

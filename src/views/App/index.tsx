@@ -12,13 +12,19 @@ import {Provider} from 'react-redux';
 import {ThemeProvider} from '@rneui/themed';
 
 import {theme} from '../../theme';
+import {PersistGate} from 'redux-persist/integration/react';
+import {persistStore} from 'redux-persist';
+
+let persistor = persistStore(rootStore);
 
 const App: React.FC = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
         <Provider store={rootStore}>
-          <RouterNavigation />
+          <PersistGate loading={null} persistor={persistor}>
+            <RouterNavigation />
+          </PersistGate>
         </Provider>
       </ThemeProvider>
     </>

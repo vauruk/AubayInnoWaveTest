@@ -6,11 +6,12 @@
 import React from 'react';
 
 import {useNavigation} from '@react-navigation/native';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {Props} from './types';
 import {RootState} from '../../store';
 import {useSelector} from 'react-redux';
 import {HomeRoutes} from '../../routes/Home/types';
+import {Text} from '@rneui/themed';
 
 const Mock: React.FC<Props> = (props: Props) => {
   const navigation = useNavigation();
