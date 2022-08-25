@@ -1,8 +1,8 @@
 # [Vanderson Vauruk](https://www.linkedin.com/in/vauruk/?locale=en_US)
 
-# [GitHub - Vauruk](https://github.com/vauruk)
+### [GitHub - Vauruk](https://github.com/vauruk)
 
-# AubayInnoWaveTest
+### AubayInnoWaveTest
 
 ## Created project in React Native
 
