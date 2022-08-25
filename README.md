@@ -51,4 +51,7 @@ https://user-images.githubusercontent.com/12579082/186726831-0a0789c8-06fa-4480-
 - Import of the CVS file
 - Apply unit test in more code
 - The App is prepared for auth method (Firabase, OAuth), necessary a litle bit implementation for works
-- 
+
+
+
+#### Author: Vanderson de Moura Vauruk
