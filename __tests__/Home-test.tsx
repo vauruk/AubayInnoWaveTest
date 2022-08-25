@@ -6,30 +6,24 @@ import 'react-native';
 import React from 'react';
 import Home from '../src/views/Home';
 
-import {Button, NativeModules, Text, TextInput, View} from 'react-native';
 import {
   render,
   screen,
   fireEvent,
   act,
   cleanup,
-  waitFor,
 } from '@testing-library/react-native';
 import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
-import HomeNavigator from '../src/routes/Home';
 import {rootStore} from '../src/store';
 import {ThemeProvider} from '@rneui/themed';
 import {theme} from '../src/theme';
 import {createStackNavigator} from '@react-navigation/stack';
 import {HomeRoutes} from '../src/routes/Home/types';
 import {EditDevice} from '../src/views';
-import RouterNavigation from '../src/routes/router';
 import HeaderButton from '../src/views/Home/headerButton';
-import {RootStackParamsList} from '../src/routes/Root/types';
 
-//afterEach(cleanup);
-//const RootStack = createStackNavigator();
+afterEach(cleanup);
 const RootStack = createStackNavigator();
 const MockedNavigator = ({component, params = {}}) => {
   return (
