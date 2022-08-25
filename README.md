@@ -45,3 +45,10 @@ https://user-images.githubusercontent.com/12579082/186726831-0a0789c8-06fa-4480-
 [Vanderson Vauruk - EN](https://www.linkedin.com/in/vauruk/?locale=en_US)
 
 [GitHub - Vauruk](https://github.com/vauruk)
+
+# New features
+- Export in CVS file (share with email or whatsapp etc)
+- Import of the CVS file
+- Apply unit test in more code
+- The App is prepared for auth method (Firabase, OAuth), necessary a litle bit implementation for works
+- 
