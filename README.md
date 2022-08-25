@@ -1,5 +1,7 @@
 # [Vanderson Vauruk](https://www.linkedin.com/in/vauruk/?locale=en_US)
 
+# [GitHub - Vauruk](https://github.com/vauruk)
+
 # AubayInnoWaveTest
 
 ## Created project in React Native
@@ -40,11 +42,6 @@ test devices (test device has properties: model, os, current owner,notes)
 
 # Video Demo
 https://user-images.githubusercontent.com/12579082/186726831-0a0789c8-06fa-4480-8bf0-e458af5b34cc.mp4
-
-
-[Vanderson Vauruk - EN](https://www.linkedin.com/in/vauruk/?locale=en_US)
-
-[GitHub - Vauruk](https://github.com/vauruk)
 
 # New features
 - Export in CVS file (share with email or whatsapp etc)
