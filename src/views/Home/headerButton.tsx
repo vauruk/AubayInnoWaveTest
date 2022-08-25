@@ -48,7 +48,6 @@ const HeaderButton: React.FC<Props> = (props: Props) => {
 
   const handleUploadFile = () => {
     let results = changeCvsToArray(cvsText);
-    console.log('first', results);
     dispatch(fetchUploadListDevice(results));
     setIsShowUpload(false);
   };
@@ -110,6 +109,7 @@ const HeaderButton: React.FC<Props> = (props: Props) => {
         </Col>
         <Col flex={0.3}>
           <TouchableHighlight
+            testID="buttonAddDevice"
             style={{padding: 5}}
             underlayColor={theme.colors.grey5}
             onPress={() => handleNav()}>

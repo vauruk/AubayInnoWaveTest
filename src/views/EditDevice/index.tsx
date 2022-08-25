@@ -71,6 +71,7 @@ const EditDevice: React.FC<Props> = (props: Props) => {
         </BottomSheet>
 
         <Input
+          testID="modelId"
           label={'Model'}
           value={deviceData?.model}
           onChangeText={value => onChangeText(FieldLabel.model, value)}
@@ -86,7 +87,11 @@ const EditDevice: React.FC<Props> = (props: Props) => {
           onChangeText={value => onChangeText(FieldLabel.notes, value)}
         />
         <View style={{marginHorizontal: 10}}>
-          <Button title="Save" onPress={() => handleSave()} />
+          <Button
+            testID="submitSaveDevice"
+            title="Save"
+            onPress={() => handleSave()}
+          />
         </View>
       </View>
     </ScrollView>

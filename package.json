@@ -6,9 +6,17 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "clean": "watchman watch-del-all && rm -rf node_modules && yarn  && yarn start --reset-cache && rm -rf /tmp/metro-*"
+    "clean": "watchman watch-del-all && rm -rf node_modules && yarn  && yarn start --reset-cache && rm -rf /tmp/metro-*",
+    "// =========================================================================================================T1": "",
+    "// Start TEST                                                                                                       ": "",
+    "// =========================================================================================================T2": "",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --watchAll false",
+    "// =========================================================================================================T1": "",
+    "// End TEST                                                                                                       ": "",
+    "// =========================================================================================================T1": ""
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.9",
@@ -43,6 +51,8 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^4.0.11",
+    "@testing-library/react-native": "^11.0.0",
     "@tsconfig/react-native": "^2.0.2",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.69.3",
@@ -58,6 +68,22 @@
   },
   "jest": {
     "preset": "react-native",
+    "collectCoverageFrom": [
+      "src/components/**/*.(tsx)",
+      "src/services/**/*.(ts|tsx)",
+      "src/store/**/*.(ts|tsx)",
+      "src/utils/**/*.(js|jsx|ts|tsx)",
+      "src/hooks/**/*.(js|jsx|ts|tsx)",
+      "src/views/**/*.(tsx)"
+    ],
+    "setupFiles": [
+      "<rootDir>/__tests__/jestSetupFile.ts",
+      "<rootDir>/__tests__/__mocks__/react-native-gesture-handler.ts"
+    ],
+    "modulePathIgnorePatterns": [
+      "__mocks__",
+      "<rootDir>/__tests__/jestSetupFile.ts"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -65,6 +91,9 @@
       "jsx",
       "json",
       "node"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|@react-native|@react-native-community|@react-navigation|@rneui/themed|@rneui/base)"
     ]
   }
 }

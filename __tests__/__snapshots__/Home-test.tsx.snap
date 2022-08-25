@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Making test Devices Liste Edit should match the snapshot EditDevice 1`] = `[Function]`;
+
+exports[`Making test Devices Liste Edit should match the snapshot Home 1`] = `[Function]`;
+
+exports[`Open Home Screen 1`] = `[Function]`;

@@ -70,7 +70,7 @@ const Home: React.FC<Props> = (props: Props) => {
   );
 
   return (
-    <View style={customTheme.content}>
+    <View style={customTheme.content} testID={'homeListScreen'}>
       <CustomModal
         type="info"
         title={quoteDay?.head}
@@ -95,6 +95,7 @@ const Home: React.FC<Props> = (props: Props) => {
         <Text>Confirm delete this item?</Text>
       </CustomModal>
       <FlatList
+        testID="flatList"
         data={listDevice}
         renderItem={renderItem}
         keyExtractor={item => item.id}
